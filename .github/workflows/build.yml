@@ -1,4 +1,4 @@
-name: CMake
+name: Build and Test
 
 on:
   push:
@@ -16,22 +16,19 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install CMake
-      uses: jwlawson/actions-setup-cmake@v1.10
-
-    - name: Configure CMake
-      run: cmake -B build
+    - name: Set up CMake
+      uses: actions/setup-cmake@v1
+      with:
+        cmake-version: '3.21'
 
     - name: Build
-      run: cmake --build build
+      run: cmake -B build && cmake --build build --config Release
 
-    - name: Test
-      run: |
-        cd build
-        ctest --output-on-failure || true
+    - name: Run tests
+      run: ./build/tests
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: house_and_theme_tests
-        path: build
+        name: built-files
+        path: build/example
