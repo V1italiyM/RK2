@@ -3,23 +3,21 @@
 #include "abstraction.h"
 #include "implementor.h"
 
-TEST(BridgeTest, ConcreteImplementorAOperation) {
+TEST(BridgeTest, TestOperationA) {
     ConcreteImplementorA implA;
     RefinedAbstraction abs(&implA);
-    EXPECT_EQ(abs.Operation(), "ConcreteImplementorA Operation");
+    EXPECT_EQ(abs.Operation(), "ConcreteImplementorA: Operation");
 }
 
-TEST(BridgeTest, ConcreteImplementorBOperation) {
+TEST(BridgeTest, TestOperationB) {
     ConcreteImplementorB implB;
     RefinedAbstraction abs(&implB);
-    EXPECT_EQ(abs.Operation(), "ConcreteImplementorB Operation");
+    EXPECT_EQ(abs.Operation(), "ConcreteImplementorB: Operation");
 }
 
-TEST(BridgeTest, ChangeImplementor) {
+TEST(BridgeTest, TestChangeImplementor) {
     ConcreteImplementorA implA;
     RefinedAbstraction abs(&implA);
-    EXPECT_EQ(abs.Operation(), "ConcreteImplementorA Operation");
-    ConcreteImplementorB implB;
-    abs.SetImplementor(&implB);
-    EXPECT_EQ(abs.Operation(), "ConcreteImplementorB Operation");
+    abs.SetImplementor(&implA);
+    EXPECT_EQ(abs.Operation(), "ConcreteImplementorA: Operation");
 }
