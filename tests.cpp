@@ -1,40 +1,28 @@
 #include <gtest/gtest.h>
 #include "house_and_theme.cpp"
 
-TEST(BridgeTest, InitialState) {
-    // Создание объектов
-    ImplementorA implA;
-    RefinedAbstraction abs(&implA);
-
-    // Проверка начального состояния
-    EXPECT_EQ(abs.Operation(), "ConcreteImplementorA: Operation");
+TEST(HouseTest, InitialState) {
+    House house;
+    EXPECT_EQ(house.GetThemeName(), "Default");
+    EXPECT_EQ(house.GetWallColor(), "White");
+    EXPECT_EQ(house.GetDoorColor(), "Brown");
+    EXPECT_EQ(house.GetRoofMaterial(), "Tiles");
 }
 
-TEST(BridgeTest, ChangeImplementor) {
-    // Создание объектов
-    ImplementorA implA;
-    RefinedAbstraction abs(&implA);
-    
-    // Смена реализации
-    ImplementorB implB;
-    abs.SetImplementor(&implB);
-    
-    // Проверка смены реализации
-    EXPECT_EQ(abs.Operation(), "ConcreteImplementorB: Operation");
+TEST(HouseTest, SetTheme) {
+    House house;
+    house.SetTheme("Modern");
+    EXPECT_EQ(house.GetThemeName(), "Modern");
+    EXPECT_EQ(house.GetWallColor(), "Gray");
+    EXPECT_EQ(house.GetDoorColor(), "Black");
+    EXPECT_EQ(house.GetRoofMaterial(), "Metal");
 }
 
-TEST(BridgeTest, ChangeToInitialImplementor) {
-    // Создание объектов
-    ImplementorA implA;
-    RefinedAbstraction abs(&implA);
-
-    // Смена реализации
-    ImplementorB implB;
-    abs.SetImplementor(&implB);
-    
-    // Сброс к начальной реализации
-    abs.SetImplementor(&implA);
-
-    // Проверка возвращения к начальной реализации
-    EXPECT_EQ(abs.Operation(), "ConcreteImplementorA: Operation");
+TEST(HouseTest, SetCustomTheme) {
+    House house;
+    house.SetCustomTheme("Custom", "Blue", "Red", "Glass");
+    EXPECT_EQ(house.GetThemeName(), "Custom");
+    EXPECT_EQ(house.GetWallColor(), "Blue");
+    EXPECT_EQ(house.GetDoorColor(), "Red");
+    EXPECT_EQ(house.GetRoofMaterial(), "Glass");
 }
