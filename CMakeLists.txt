@@ -14,17 +14,9 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# Отключаем обработку предупреждений как ошибок для Google Test
-target_compile_options(gtest PRIVATE -Wno-error=maybe-uninitialized)
-
-# Отключаем обработку предупреждений о неинициализированных переменных как ошибок
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=maybe-uninitialized")
-
-enable_testing()
-
-# Добавляем исполняемые файлы для тестов
-add_executable(tests tests.cpp)
-target_link_libraries(tests gtest_main)
+# Создаем исполняемый файл для тестов
+add_executable(house_and_theme_tests tests.cpp)
+target_link_libraries(house_and_theme_tests gtest_main)
 
 include(GoogleTest)
-gtest_discover_tests(tests)
+gtest_discover_tests(house_and_theme_tests)
