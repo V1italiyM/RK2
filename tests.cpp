@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "bridge.cpp"
+#include "house_and_theme.cpp"
 
 TEST(BridgeTest, InitialState) {
     // Создание объектов
