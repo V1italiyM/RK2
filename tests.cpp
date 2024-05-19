@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include "house_and_theme.cpp"
 #include "abstraction.h"
 #include "implementor.h"
 
