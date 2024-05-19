@@ -1,6 +1,12 @@
 name: CMake
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -19,13 +25,13 @@ jobs:
     - name: Build
       run: cmake --build build
 
-    - name: Run tests
+    - name: Test
       run: |
         cd build
-        ./tests
+        ctest --output-on-failure
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: house_and_theme.cpp
+        name: house_and_theme_tests
         path: build
