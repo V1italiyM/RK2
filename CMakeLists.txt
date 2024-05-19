@@ -7,12 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Добавляем исполняемый файл для примера
 add_executable(example house_and_theme.cpp)
 
-# Добавляем исполняемый файл для тестов
-add_executable(tests tests.cpp)
-
-# Связываем Google Test с тестовым исполняемым файлом
-target_link_libraries(tests gtest gtest_main)
-
 # GoogleTest
 include(FetchContent)
 FetchContent_Declare(
@@ -29,9 +23,7 @@ target_compile_options(gtest PRIVATE -Wno-error=maybe-uninitialized)
 # Отключаем обработку предупреждений о неинициализированных переменных как ошибок
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=maybe-uninitialized")
 
-enable_testing()
-
-# Добавляем исполняемые файлы для тестов
+# Добавляем исполняемый файл для тестов
 add_executable(tests tests.cpp)
 target_link_libraries(tests gtest_main)
 
