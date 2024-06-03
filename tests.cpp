@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "house_and_theme.cpp" // Подключаем исходный файл, чтобы иметь доступ к классам
+#include "house_and_theme.h" // Подключаем исходный файл, чтобы иметь доступ к классам
 
 // Тесты для класса Theme
 TEST(ThemeTest, WhiteThemeTest) {
