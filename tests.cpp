@@ -4,7 +4,7 @@
 // Тесты для класса Theme
 TEST(ThemeTest, WhiteThemeTest) {
     WhiteTheme whiteTheme;
-    EXPECT_EQ(whiteTheme.Name(), "Red Theme");
+    EXPECT_EQ(whiteTheme.Name(), "White Theme");
     EXPECT_EQ(whiteTheme.WallColor().R, 255);
     EXPECT_EQ(whiteTheme.WallColor().G, 255);
     EXPECT_EQ(whiteTheme.WallColor().B, 255);
